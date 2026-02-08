@@ -119,9 +119,53 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
+        
+        /* Scroll Progress Bar */
+        #scrollProgress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #667eea 100%);
+            background-size: 200% 100%;
+            animation: gradient 3s ease infinite;
+            z-index: 9999;
+            transition: width 0.1s ease-out;
+        }
+        
+        /* Active Navigation Link */
+        .nav-link {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link.active::after {
+            width: 80%;
+        }
+        
+        .nav-link:hover::after {
+            width: 80%;
+        }
     </style>
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans">
+    
+    <!-- Scroll Progress Bar -->
+    <div id="scrollProgress"></div>
     
     <!-- Navbar -->
     <nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border-b border-gray-200 dark:border-gray-800">
@@ -136,12 +180,12 @@
                 
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex space-x-1">
-                    <a href="#home" class="px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Home</a>
-                    <a href="#about" class="px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">About</a>
-                    <a href="#skills" class="px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Skills</a>
-                    <a href="#projects" class="px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Projects</a>
-                    <a href="#services" class="px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Services</a>
-                    <a href="#contact" class="px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Contact</a>
+                    <a href="#home" class="nav-link px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Home</a>
+                    <a href="#about" class="nav-link px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">About</a>
+                    <a href="#skills" class="nav-link px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Skills</a>
+                    <a href="#projects" class="nav-link px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Projects</a>
+                    <a href="#services" class="nav-link px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Services</a>
+                    <a href="#contact" class="nav-link px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Contact</a>
                 </div>
                 
                 <!-- Dark Mode Toggle -->
@@ -168,12 +212,12 @@
         <!-- Mobile Menu -->
         <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
             <div class="px-4 py-4 space-y-2">
-                <a href="#home" class="block px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">Home</a>
-                <a href="#about" class="block px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">About</a>
-                <a href="#skills" class="block px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">Skills</a>
-                <a href="#projects" class="block px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">Projects</a>
-                <a href="#services" class="block px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">Services</a>
-                <a href="#contact" class="block px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">Contact</a>
+                <a href="#home" class="nav-link block px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">Home</a>
+                <a href="#about" class="nav-link block px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">About</a>
+                <a href="#skills" class="nav-link block px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">Skills</a>
+                <a href="#projects" class="nav-link block px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">Projects</a>
+                <a href="#services" class="nav-link block px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">Services</a>
+                <a href="#contact" class="nav-link block px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">Contact</a>
             </div>
         </div>
     </nav>
@@ -279,6 +323,14 @@
                     
                     <div class="space-y-4 text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
                         <p>
+                        <strong>Profile:</strong> Full Stack Web Developer <br>
+                        <strong>Degree:</strong> B.Tech <br>
+                        <strong>Experience:</strong> 15+ Years <br>
+                        <strong>Phone:</strong> +91 9818979009 <br>
+                        <strong>Email:</strong> 9818979009x@gmail.com <br>
+                        <strong>Address:</strong> Gurugram, India
+                        </p>
+                        <p>
                             I'm a passionate <span class="font-semibold text-gray-900 dark:text-white">Full Stack Developer</span> with extensive experience in building high-performance web applications. I specialize in creating seamless user experiences and robust backend solutions.
                         </p>
                         <p>
@@ -287,15 +339,6 @@
                         <p>
                             With a focus on <span class="font-semibold text-gray-900 dark:text-white">responsive design, SEO optimization</span>, and <span class="font-semibold text-gray-900 dark:text-white">performance</span>, I help businesses establish a strong online presence and achieve their digital goals.
                         </p>
-                        <p class="">
-                        <strong>Profile:</strong> Full Stack Web Developer <br>
-                        <strong>Degree:</strong> B.Tech <br>
-                        <strong>Phone:</strong> +91 9818979009 <br>
-                        <strong>Email:</strong> 9818979009x@gmail.com <br>
-                        <strong>Address:</strong> Gurugram, India
-                        </p>
-
-
                     </div>
                     
                     <!-- Stats -->
@@ -966,7 +1009,7 @@
     </div>
 
     <!-- JavaScript -->
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Dark Mode Toggle
         const darkModeToggle = document.getElementById('darkModeToggle');
         const html = document.documentElement;
@@ -1038,6 +1081,45 @@
             section.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
             observer.observe(section);
         });
+        
+        // Scroll Progress Bar
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('scrollProgress').style.width = scrolled + '%';
+        });
+        
+        // Active Navigation Link on Scroll
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        function setActiveLink() {
+            let current = '';
+            const scrollPosition = window.scrollY + 100; // Offset for navbar height
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+        
+        // Set active link on scroll
+        window.addEventListener('scroll', setActiveLink);
+        
+        // Set active link on page load
+        setActiveLink();
     </script>
 </body>
 </html>
