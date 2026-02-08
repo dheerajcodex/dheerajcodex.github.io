@@ -1,147 +1,1042 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dheeraj Portfolio</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dheeraj | Full Stack Developer</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        // Tailwind configuration
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        accent: {
+                            50: '#faf5ff',
+                            100: '#f3e8ff',
+                            200: '#e9d5ff',
+                            300: '#d8b4fe',
+                            400: '#c084fc',
+                            500: '#a855f7',
+                            600: '#9333ea',
+                            700: '#7e22ce',
+                            800: '#6b21a8',
+                            900: '#581c87',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Custom animations and effects */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes glow {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .animate-glow {
+            animation: glow 2s ease-in-out infinite;
+        }
+        
+        .animate-gradient {
+            background-size: 200% 200%;
+            animation: gradient 15s ease infinite;
+        }
+        
+        .grid-pattern {
+            background-image: 
+                linear-gradient(rgba(139, 92, 246, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(139, 92, 246, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+        
+        .dark .grid-pattern {
+            background-image: 
+                linear-gradient(rgba(139, 92, 246, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(139, 92, 246, 0.1) 1px, transparent 1px);
+        }
+        
+        /* Smooth transitions */
+        * {
+            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms;
+        }
+        
+        /* Gradient text */
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .dark .gradient-text {
+            background: linear-gradient(135deg, #a78bfa 0%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans">
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans">
+    
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border-b border-gray-200 dark:border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="#home" class="text-2xl font-bold font-mono gradient-text hover:scale-105 transform transition-transform duration-300">
+                        Dheeraj
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex space-x-1">
+                    <a href="#home" class="px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Home</a>
+                    <a href="#about" class="px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">About</a>
+                    <a href="#skills" class="px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Skills</a>
+                    <a href="#projects" class="px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Projects</a>
+                    <a href="#services" class="px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Services</a>
+                    <a href="#contact" class="px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Contact</a>
+                </div>
+                
+                <!-- Dark Mode Toggle -->
+                <div class="flex items-center gap-4">
+                    <button id="darkModeToggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                        <svg id="sunIcon" class="w-6 h-6 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                        <svg id="moonIcon" class="w-6 h-6 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                        </svg>
+                    </button>
+                    
+                    <!-- Mobile Menu Button -->
+                    <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
+            <div class="px-4 py-4 space-y-2">
+                <a href="#home" class="block px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">Home</a>
+                <a href="#about" class="block px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">About</a>
+                <a href="#skills" class="block px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">Skills</a>
+                <a href="#projects" class="block px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">Projects</a>
+                <a href="#services" class="block px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">Services</a>
+                <a href="#contact" class="block px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">Contact</a>
+            </div>
+        </div>
+    </nav>
 
-  <!-- Hero Section -->
-  <section class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-24">
-    <div class="container mx-auto text-center px-4">
-      <h1 class="text-5xl font-bold mb-4">Dheeraj </h1>
-      <p class="text-xl mb-4">Full Stack Web Developer | Freelancer</p>
-      <p class="mb-6">Gurugram, India | Available for Freelance</p>
-      <a href="#contact" class="inline-block bg-white text-blue-600 font-semibold px-6 py-3 rounded shadow hover:bg-gray-100 transition">Contact Me</a>
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden grid-pattern">
+        <!-- Animated Background Elements -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="absolute top-20 left-10 w-72 h-72 bg-purple-500/10 dark:bg-purple-500/20 rounded-full blur-3xl animate-float"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/10 dark:bg-blue-500/20 rounded-full blur-3xl animate-float" style="animation-delay: 2s;"></div>
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-500/10 dark:bg-indigo-500/20 rounded-full blur-3xl animate-float" style="animation-delay: 4s;"></div>
+        </div>
+        
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+            <div class="space-y-8">
+                <!-- Greeting -->
+                <div class="inline-block">
+                    <span class="px-4 py-2 rounded-full bg-gradient-to-r from-purple-500/10 to-blue-500/10 dark:from-purple-500/20 dark:to-blue-500/20 border border-purple-500/20 dark:border-purple-500/30 text-sm font-mono font-semibold">
+                        👋 Available for Freelance Projects
+                    </span>
+                </div>
+                
+                <!-- Main Headline -->
+                <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight">
+                    <span class="block text-gray-900 dark:text-white">I Build Fast &</span>
+                    <span class="block gradient-text mt-2">Modern Websites</span>
+                </h1>
+                
+                <!-- Sub-headline -->
+                <p class="text-xl sm:text-2xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
+                    Full Stack Developer specializing in <span class="font-semibold text-purple-600 dark:text-purple-400">PHP</span>, 
+                    <span class="font-semibold text-blue-600 dark:text-blue-400">WordPress</span>, and 
+                    <span class="font-semibold text-indigo-600 dark:text-indigo-400">modern web technologies</span>. 
+                    Creating exceptional digital experiences for businesses worldwide.
+                </p>
+                
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
+                    <a href="#projects" class="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl overflow-hidden hover:scale-105 transform transition-all duration-300 shadow-lg hover:shadow-2xl">
+                        <span class="relative z-10 flex items-center gap-2">
+                            View Projects
+                            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                        </span>
+                        <div class="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </a>
+                    
+                    <a href="#contact" class="group inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-gray-900 dark:text-white bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-700 rounded-xl hover:border-purple-500 dark:hover:border-purple-500 hover:scale-105 transform transition-all duration-300 shadow-lg hover:shadow-2xl">
+                        <span class="flex items-center gap-2">
+                            Hire Me
+                            <svg class="w-5 h-5 group-hover:rotate-12 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+                
+                <!-- Scroll Indicator -->
+                <div class="pt-16 animate-bounce">
+                    <svg class="w-6 h-6 mx-auto text-gray-400 dark:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- Image/Visual Side -->
+                <div class="relative">
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-gray-200 dark:border-gray-700 transform hover:scale-105 transition-transform duration-500">
+                       <!--  <div class="aspect-square bg-gradient-to-br from-purple-500 via-blue-500 to-indigo-600 flex items-center justify-center p-8">
+                           <div class="text-center text-white space-y-4">
+                                <div class="text-6xl font-bold font-mono">&lt;/&gt;</div>
+                                <div class="text-2xl font-semibold">Full Stack Developer</div>
+                                <div class="text-lg opacity-90">Crafting Digital Excellence</div>
+                            </div>                             
+                        </div> -->
+                        <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Developer" class="relative rounded-2xl shadow-2xl w-full object-cover h-100">
+                    </div> 
+                   
+
+                
+                    
+                    <!-- Floating Elements -->
+                    <div class="absolute -top-6 -right-6 w-24 h-24 bg-purple-500/20 rounded-full blur-2xl animate-pulse"></div>
+                    <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-blue-500/20 rounded-full blur-2xl animate-pulse" style="animation-delay: 1s;"></div>
+                </div>
+                
+                <!-- Content Side -->
+                <div class="space-y-6">
+                    <div>
+                        <span class="text-sm font-mono font-semibold text-purple-600 dark:text-purple-400 uppercase tracking-wider">About Me</span>
+                        <h2 class="text-4xl sm:text-5xl font-bold mt-2 text-gray-900 dark:text-white">
+                            Turning Ideas Into 
+                            <span class="gradient-text">Reality</span>
+                        </h2>
+                    </div>
+                    
+                    <div class="space-y-4 text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                        <p>
+                            I'm a passionate <span class="font-semibold text-gray-900 dark:text-white">Full Stack Developer</span> with extensive experience in building high-performance web applications. I specialize in creating seamless user experiences and robust backend solutions.
+                        </p>
+                        <p>
+                            My expertise spans across <span class="font-semibold text-gray-900 dark:text-white">PHP, WordPress, JavaScript</span>, and modern frontend frameworks. I'm dedicated to writing clean, maintainable code and delivering projects that exceed client expectations.
+                        </p>
+                        <p>
+                            With a focus on <span class="font-semibold text-gray-900 dark:text-white">responsive design, SEO optimization</span>, and <span class="font-semibold text-gray-900 dark:text-white">performance</span>, I help businesses establish a strong online presence and achieve their digital goals.
+                        </p>
+                        <p class="">
+                        <strong>Profile:</strong> Full Stack Web Developer <br>
+                        <strong>Degree:</strong> B.Tech <br>
+                        <strong>Phone:</strong> +91 9818979009 <br>
+                        <strong>Email:</strong> 9818979009x@gmail.com <br>
+                        <strong>Address:</strong> Gurugram, India
+                        </p>
+
+
+                    </div>
+                    
+                    <!-- Stats -->
+                    <div class="grid grid-cols-3 gap-6 pt-6">
+                        <div class="text-center p-4 bg-gray-50 dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700">
+                            <div class="text-3xl font-bold gradient-text">15+</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">Years Experience</div>
+                        </div>
+                        <div class="text-center p-4 bg-gray-50 dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700">
+                            <div class="text-3xl font-bold gradient-text">200+</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">Projects Done</div>
+                        </div>
+                        <div class="text-center p-4 bg-gray-50 dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700">
+                            <div class="text-3xl font-bold gradient-text">100+</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">Happy Clients</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-gray-50 dark:bg-gray-900 grid-pattern">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-sm font-mono font-semibold text-purple-600 dark:text-purple-400 uppercase tracking-wider">My Expertise</span>
+                <h2 class="text-4xl sm:text-5xl font-bold mt-2 text-gray-900 dark:text-white">
+                    Technical <span class="gradient-text">Skills</span>
+                </h2>
+                <p class="text-lg text-gray-600 dark:text-gray-400 mt-4 max-w-2xl mx-auto">
+                    A comprehensive toolkit for building modern, scalable web applications
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+                <!-- Skill Card: PHP -->
+                <div class="group relative bg-white dark:bg-gray-800 rounded-xl p-6 border-2 border-gray-200 dark:border-gray-700 hover:border-purple-500 dark:hover:border-purple-500 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+                    <div class="flex flex-col items-center text-center space-y-3">
+                        <div class="w-16 h-16 rounded-full bg-indigo-500/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-10 h-10 text-indigo-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M7.01 10.49c-.53 0-.91.36-.91.82 0 .47.38.83.91.83s.9-.36.9-.83c0-.46-.37-.82-.9-.82M12 10.49c-.52 0-.9.36-.9.82 0 .47.38.83.9.83s.91-.36.91-.83c0-.46-.39-.82-.91-.82m4.99 0c-.53 0-.91.36-.91.82 0 .47.38.83.91.83s.9-.36.9-.83c0-.46-.37-.82-.9-.82M1.62 9.38c.28.21.62.32 1 .32.89 0 1.61-.72 1.61-1.61V7.85h2.93c.34 0 .68.03 1.01.07.34 1.7 1.04 3.27 2.02 4.58-1.05 1.16-2.45 1.98-4.01 2.32-.26.05-.43.31-.37.57.05.26.31.43.57.37 1.74-.38 3.3-1.3 4.46-2.6 1.16 1.3 2.72 2.22 4.46 2.6.26.05.52-.11.57-.37.05-.26-.11-.52-.37-.57-1.56-.34-2.96-1.16-4.01-2.32.98-1.31 1.68-2.88 2.02-4.58.33-.04.67-.07 1.01-.07h2.93v.24c0 .89.72 1.61 1.61 1.61.38 0 .72-.11 1-.32V18c0 1.1-.9 2-2 2H3.62c-1.1 0-2-.9-2-2V9.38M20 4H4c-1.1 0-2 .9-2 2v1.38c0 .53.21 1.04.59 1.41.37.38.88.59 1.41.59h.24v.24c0 .34.28.62.62.62h13.28c.34 0 .62-.28.62-.62v-.24h.24c.53 0 1.04-.21 1.41-.59.38-.37.59-.88.59-1.41V6c0-1.1-.9-2-2-2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-bold text-lg text-gray-900 dark:text-white">PHP</h3>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                            <div class="bg-gradient-to-r from-indigo-600 to-purple-600 h-2 rounded-full" style="width: 93%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Skill Card: WordPress -->
+                <div class="group relative bg-white dark:bg-gray-800 rounded-xl p-6 border-2 border-gray-200 dark:border-gray-700 hover:border-purple-500 dark:hover:border-purple-500 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+                    <div class="flex flex-col items-center text-center space-y-3">
+                        <div class="w-16 h-16 rounded-full bg-blue-500/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-10 h-10 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M21.469 6.825c.84 1.537 1.318 3.3 1.318 5.175 0 3.979-2.156 7.456-5.363 9.325l3.295-9.527c.615-1.54.82-2.771.82-3.864 0-.405-.026-.78-.07-1.11m-7.981.105c.647-.03 1.232-.105 1.232-.105.582-.075.514-.93-.067-.899 0 0-1.755.135-2.88.135-1.064 0-2.85-.15-2.85-.15-.585-.03-.661.855-.075.885 0 0 .54.061 1.125.09l1.68 4.605-2.37 7.08L5.354 6.9c.649-.03 1.234-.1 1.234-.1.585-.075.516-.93-.065-.896 0 0-1.746.138-2.874.138-.2 0-.438-.008-.69-.015C4.911 3.15 8.235 1.215 12 1.215c2.809 0 5.365 1.072 7.286 2.833-.046-.003-.091-.009-.141-.009-1.06 0-1.812.923-1.812 1.914 0 .89.513 1.643 1.06 2.531.411.72.89 1.643.89 2.977 0 .915-.354 1.994-.821 3.479l-1.075 3.585-3.9-11.61.001.014zM12 22.784c-1.059 0-2.081-.153-3.048-.437l3.237-9.406 3.315 9.087c.024.053.05.101.078.149-1.12.393-2.325.609-3.582.609M1.211 12c0-1.564.336-3.05.935-4.39L7.29 21.709C3.694 19.96 1.212 16.271 1.211 12M12 0C5.385 0 0 5.385 0 12s5.385 12 12 12 12-5.385 12-12S18.615 0 12 0"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-bold text-lg text-gray-900 dark:text-white">WordPress</h3>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                            <div class="bg-gradient-to-r from-blue-600 to-indigo-600 h-2 rounded-full" style="width: 94%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill Card: Shopify -->
+                <div class="group relative bg-white dark:bg-gray-800 rounded-xl p-6 border-2 border-gray-200 dark:border-gray-700 hover:border-purple-500 dark:hover:border-purple-500 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+                    <div class="flex flex-col items-center text-center space-y-3">
+                        <div class="w-16 h-16 rounded-full bg-green-500/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-10 h-10 text-green-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M15.337 23.979v-7.778l7.216-4.162L24 17.92zM14.582 23.979L0 15.522v-5.52l14.582 8.424zm0-15.567L.655 0h13.928zM23.394 11.474L15.337.655v7.167zM.655 1.886l6.917 4.014L.655 9.916z"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-bold text-lg text-gray-900 dark:text-white">Shopify</h3>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                            <div class="bg-gradient-to-r from-green-600 to-emerald-600 h-2 rounded-full" style="width: 88%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill Card: Magento -->
+                <div class="group relative bg-white dark:bg-gray-800 rounded-xl p-6 border-2 border-gray-200 dark:border-gray-700 hover:border-purple-500 dark:hover:border-purple-500 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+                    <div class="flex flex-col items-center text-center space-y-3">
+                        <div class="w-16 h-16 rounded-full bg-orange-500/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-10 h-10 text-orange-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0L3 5.5v13L12 24l9-5.5v-13L12 0zm0 2.5l7 4.25v8.5l-7 4.25-7-4.25v-8.5l7-4.25zm0 3L7 8.75v6.5l5 3.25 5-3.25v-6.5L12 5.5z"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-bold text-lg text-gray-900 dark:text-white">Magento</h3>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                            <div class="bg-gradient-to-r from-orange-600 to-red-600 h-2 rounded-full" style="width: 85%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill Card: HTML -->
+                <div class="group relative bg-white dark:bg-gray-800 rounded-xl p-6 border-2 border-gray-200 dark:border-gray-700 hover:border-purple-500 dark:hover:border-purple-500 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+                    <div class="flex flex-col items-center text-center space-y-3">
+                        <div class="w-16 h-16 rounded-full bg-orange-500/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-10 h-10 text-orange-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 17.56l-6.94 3.64 1.33-7.73L.79 8.03l7.77-1.12L12 0l3.44 6.91 7.77 1.12-5.6 5.44 1.33 7.73z"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-bold text-lg text-gray-900 dark:text-white">HTML5 / CSS3</h3>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                            <div class="bg-gradient-to-r from-orange-500 to-red-500 h-2 rounded-full" style="width: 95%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Skill Card: JavaScript -->
+                <div class="group relative bg-white dark:bg-gray-800 rounded-xl p-6 border-2 border-gray-200 dark:border-gray-700 hover:border-purple-500 dark:hover:border-purple-500 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+                    <div class="flex flex-col items-center text-center space-y-3">
+                        <div class="w-16 h-16 rounded-full bg-yellow-500/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-10 h-10 text-yellow-500" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.404-.601-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-bold text-lg text-gray-900 dark:text-white">JavaScript</h3>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                            <div class="bg-gradient-to-r from-yellow-500 to-orange-500 h-2 rounded-full" style="width: 88%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Skill Card: Tailwind -->
+                <div class="group relative bg-white dark:bg-gray-800 rounded-xl p-6 border-2 border-gray-200 dark:border-gray-700 hover:border-purple-500 dark:hover:border-purple-500 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+                    <div class="flex flex-col items-center text-center space-y-3">
+                        <div class="w-16 h-16 rounded-full bg-cyan-500/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-10 h-10 text-cyan-500" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 6c-2.67 0-4.33 1.33-5 4 1-1.33 2.17-1.83 3.5-1.5.76.19 1.31.74 1.91 1.35.98 1 2.09 2.15 4.59 2.15 2.67 0 4.33-1.33 5-4-1 1.33-2.17 1.83-3.5 1.5-.76-.19-1.3-.74-1.91-1.35C15.61 7.15 14.5 6 12 6m-5 6c-2.67 0-4.33 1.33-5 4 1-1.33 2.17-1.83 3.5-1.5.76.19 1.3.74 1.91 1.35C8.39 16.85 9.5 18 12 18c2.67 0 4.33-1.33 5-4-1 1.33-2.17 1.83-3.5 1.5-.76-.19-1.3-.74-1.91-1.35C10.61 13.15 9.5 12 7 12z"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-bold text-lg text-gray-900 dark:text-white">Tailwind CSS</h3>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                            <div class="bg-gradient-to-r from-cyan-500 to-blue-500 h-2 rounded-full" style="width: 90%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+
+                                
+                <!-- Skill Card: GitHub -->
+                <div class="group relative bg-white dark:bg-gray-800 rounded-xl p-6 border-2 border-gray-200 dark:border-gray-700 hover:border-purple-500 dark:hover:border-purple-500 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+                    <div class="flex flex-col items-center text-center space-y-3">
+                        <div class="w-16 h-16 rounded-full bg-gray-500/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-10 h-10 text-gray-700 dark:text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-bold text-lg text-gray-900 dark:text-white">GitHub</h3>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                            <div class="bg-gradient-to-r from-gray-600 to-gray-800 h-2 rounded-full" style="width: 90%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-white dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-sm font-mono font-semibold text-purple-600 dark:text-purple-400 uppercase tracking-wider">Portfolio</span>
+                <h2 class="text-4xl sm:text-5xl font-bold mt-2 text-gray-900 dark:text-white">
+                    Featured <span class="gradient-text">Projects</span>
+                </h2>
+                <p class="text-lg text-gray-600 dark:text-gray-400 mt-4 max-w-2xl mx-auto">
+                    Showcasing recent work that demonstrates my expertise and creativity
+                </p>
+            </div>
+            
+            <!-- E-Commerce Projects -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">E-Commerce Stores</h3>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="https://www.dcgpac.com" target="_blank" class="group px-6 py-3 bg-white dark:bg-gray-800 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-purple-500 dark:hover:border-purple-500 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                        <span class="text-gray-900 dark:text-white font-semibold group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors flex items-center gap-2">
+                            DCGPAC
+                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </span>
+                    </a>
+                    <a href="https://www.rentickle.com" target="_blank" class="group px-6 py-3 bg-white dark:bg-gray-800 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-purple-500 dark:hover:border-purple-500 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                        <span class="text-gray-900 dark:text-white font-semibold group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors flex items-center gap-2">
+                            Rentickle
+                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </span>
+                    </a>
+                    <a href="https://lovelysweets.com" target="_blank" class="group px-6 py-3 bg-white dark:bg-gray-800 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-purple-500 dark:hover:border-purple-500 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                        <span class="text-gray-900 dark:text-white font-semibold group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors flex items-center gap-2">
+                            Lovely Sweets
+                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </span>
+                    </a>
+                    <a href="https://www.exclusivelane.com" target="_blank" class="group px-6 py-3 bg-white dark:bg-gray-800 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-purple-500 dark:hover:border-purple-500 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                        <span class="text-gray-900 dark:text-white font-semibold group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors flex items-center gap-2">
+                            Exclusive Lane
+                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </span>
+                    </a>
+                    <a href="https://www.rjmart.in" target="_blank" class="group px-6 py-3 bg-white dark:bg-gray-800 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-purple-500 dark:hover:border-purple-500 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                        <span class="text-gray-900 dark:text-white font-semibold group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors flex items-center gap-2">
+                            RJ Mart
+                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </span>
+                    </a>
+                    <a href="https://govindasnj.com" target="_blank" class="group px-6 py-3 bg-white dark:bg-gray-800 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-purple-500 dark:hover:border-purple-500 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                        <span class="text-gray-900 dark:text-white font-semibold group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors flex items-center gap-2">
+                            Govindas NJ
+                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </span>
+                    </a>
+                    <a href="https://macramebyshivani.com" target="_blank" class="group px-6 py-3 bg-white dark:bg-gray-800 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-purple-500 dark:hover:border-purple-500 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                        <span class="text-gray-900 dark:text-white font-semibold group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors flex items-center gap-2">
+                            Macrame By Shivani
+                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Business Websites -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">Business Websites</h3>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="https://www.rayspowerinfra.com" target="_blank" class="group px-6 py-3 bg-white dark:bg-gray-800 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                        <span class="text-gray-900 dark:text-white font-semibold group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors flex items-center gap-2">
+                            Rays Power Infra
+                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </span>
+                    </a>
+                    <a href="https://www.brusselsmandir.com" target="_blank" class="group px-6 py-3 bg-white dark:bg-gray-800 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                        <span class="text-gray-900 dark:text-white font-semibold group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors flex items-center gap-2">
+                            Brussels Mandir
+                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </span>
+                    </a>
+                    <a href="https://www.gullendah.com.au" target="_blank" class="group px-6 py-3 bg-white dark:bg-gray-800 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                        <span class="text-gray-900 dark:text-white font-semibold group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors flex items-center gap-2">
+                            Gullendah
+                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </span>
+                    </a>
+                    <a href="https://www.fmawealth.com.au" target="_blank" class="group px-6 py-3 bg-white dark:bg-gray-800 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                        <span class="text-gray-900 dark:text-white font-semibold group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors flex items-center gap-2">
+                            FMA Wealth
+                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </span>
+                    </a>
+                    <a href="https://hueb.com/" target="_blank" class="group px-6 py-3 bg-white dark:bg-gray-800 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                        <span class="text-gray-900 dark:text-white font-semibold group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors flex items-center gap-2">
+                            Hueb
+                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </span>
+                    </a>
+                    <a href="https://uttarakhandexperts.com" target="_blank" class="group px-6 py-3 bg-white dark:bg-gray-800 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                        <span class="text-gray-900 dark:text-white font-semibold group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors flex items-center gap-2">
+                            Uttarakhand Experts
+                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </span>
+                    </a>
+                    <a href="https://dogdekho.com" target="_blank" class="group px-6 py-3 bg-white dark:bg-gray-800 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                        <span class="text-gray-900 dark:text-white font-semibold group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors flex items-center gap-2">
+                            Dog Dekho
+                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </span>
+                    </a>
+                    <a href="https://ipodekho.in" target="_blank" class="group px-6 py-3 bg-white dark:bg-gray-800 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                        <span class="text-gray-900 dark:text-white font-semibold group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors flex items-center gap-2">
+                            IPO DeKho.in
+                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </span>
+                    </a>
+                    <a href="https://nidekagroup.com" target="_blank" class="group px-6 py-3 bg-white dark:bg-gray-800 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                        <span class="text-gray-900 dark:text-white font-semibold group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors flex items-center gap-2">
+                            Nideka Group
+                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </span>
+                    </a>
+                    <a href="https://smoothiebikehire.co.uk" target="_blank" class="group px-6 py-3 bg-white dark:bg-gray-800 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                        <span class="text-gray-900 dark:text-white font-semibold group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors flex items-center gap-2">
+                            Smoothie Bike Hire
+                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </span>
+                    </a>
+                    <a href="https://duckherding.uk" target="_blank" class="group px-6 py-3 bg-white dark:bg-gray-800 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                        <span class="text-gray-900 dark:text-white font-semibold group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors flex items-center gap-2">
+                            Duckherding
+                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </span>
+                    </a>
+                    <a href="https://www.voyagereninde.com" target="_blank" class="group px-6 py-3 bg-white dark:bg-gray-800 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                        <span class="text-gray-900 dark:text-white font-semibold group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors flex items-center gap-2">
+                           Voyagereninde
+                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </span>
+                    </a>
+                    <a href="https://qmaths.com/" target="_blank" class="group px-6 py-3 bg-white dark:bg-gray-800 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                        <span class="text-gray-900 dark:text-white font-semibold group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors flex items-center gap-2">
+                           Q Maths
+                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </span>
+                    </a>
+                    <a href="https://www.queenswaydentalpractice.co.uk/" target="_blank" class="group px-6 py-3 bg-white dark:bg-gray-800 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                        <span class="text-gray-900 dark:text-white font-semibold group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors flex items-center gap-2">
+                           Queensway Dental Practice
+                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </span>
+                    </a>
+
+                    
+                </div>
+            </div>
+            
+            <!-- Blog Platforms -->
+            <div>
+                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">Blog Platforms</h3>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="https://ipwithease.com" target="_blank" class="group px-6 py-3 bg-white dark:bg-gray-800 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-indigo-500 dark:hover:border-indigo-500 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                        <span class="text-gray-900 dark:text-white font-semibold group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors flex items-center gap-2">
+                            IP With Ease
+                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </span>
+                    </a>
+                    <a href="https://networkinterview.com/" target="_blank" class="group px-6 py-3 bg-white dark:bg-gray-800 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-indigo-500 dark:hover:border-indigo-500 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                        <span class="text-gray-900 dark:text-white font-semibold group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors flex items-center gap-2">
+                            Network Interview
+                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </span>
+                    </a>
+                    <a href="https://rkhabar.com" target="_blank" class="group px-6 py-3 bg-white dark:bg-gray-800 rounded-xl border-2 border-gray-200 dark:border-gray-700 hover:border-indigo-500 dark:hover:border-indigo-500 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                        <span class="text-gray-900 dark:text-white font-semibold group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors flex items-center gap-2">
+                            R.Khabar
+                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-gray-50 dark:bg-gray-900 grid-pattern">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-sm font-mono font-semibold text-purple-600 dark:text-purple-400 uppercase tracking-wider">What I Offer</span>
+                <h2 class="text-4xl sm:text-5xl font-bold mt-2 text-gray-900 dark:text-white">
+                    My <span class="gradient-text">Services</span>
+                </h2>
+                <p class="text-lg text-gray-600 dark:text-gray-400 mt-4 max-w-2xl mx-auto">
+                    Comprehensive web development solutions tailored to your needs
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Service 1 -->
+                <div class="group bg-white dark:bg-gray-800 rounded-2xl p-8 border-2 border-gray-200 dark:border-gray-700 hover:border-purple-500 dark:hover:border-purple-500 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                    <div class="flex items-start gap-6">
+                        <div class="flex-shrink-0 w-16 h-16 rounded-xl bg-gradient-to-br from-purple-500 to-blue-600 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">Website Development</h3>
+                            <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                                Custom website development from scratch using modern technologies. Responsive, fast, and SEO-optimized solutions that drive results.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="group bg-white dark:bg-gray-800 rounded-2xl p-8 border-2 border-gray-200 dark:border-gray-700 hover:border-purple-500 dark:hover:border-purple-500 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                    <div class="flex items-start gap-6">
+                        <div class="flex-shrink-0 w-16 h-16 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">WordPress Solutions</h3>
+                            <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                                Expert WordPress development including custom themes, plugins, and optimization. Transform your WordPress site into a powerful platform.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="group bg-white dark:bg-gray-800 rounded-2xl p-8 border-2 border-gray-200 dark:border-gray-700 hover:border-purple-500 dark:hover:border-purple-500 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                    <div class="flex items-start gap-6">
+                        <div class="flex-shrink-0 w-16 h-16 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">UI/UX Design</h3>
+                            <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                                Beautiful, intuitive interfaces that prioritize user experience. Creating designs that are both aesthetically pleasing and highly functional.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                                
+                <!-- Service 4 -->
+                <div class="group bg-white dark:bg-gray-800 rounded-2xl p-8 border-2 border-gray-200 dark:border-gray-700 hover:border-purple-500 dark:hover:border-purple-500 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                    <div class="flex items-start gap-6">
+                        <div class="flex-shrink-0 w-16 h-16 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">Maintenance & Support</h3>
+                            <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                                Ongoing website maintenance, updates, and technical support. Keep your site secure, fast, and running smoothly with regular care.<br>
+                                <strong>Expertise - </strong> Malware removal, Version upgrades, Speed optimization, Security updates
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-sm font-mono font-semibold text-purple-600 dark:text-purple-400 uppercase tracking-wider">Get In Touch</span>
+                <h2 class="text-4xl sm:text-5xl font-bold mt-2 text-gray-900 dark:text-white">
+                    Let's Work <span class="gradient-text">Together</span>
+                </h2>
+                <p class="text-lg text-gray-600 dark:text-gray-400 mt-4 max-w-2xl mx-auto">
+                    Have a project in mind? I'd love to hear about it. Send me a message and let's create something amazing.
+                </p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <!-- Contact Information Grid -->
+                <div class="grid md:grid-cols-2 gap-8 mb-12">
+                    <!-- Phone -->
+                    <div class="group bg-white dark:bg-gray-800 rounded-2xl p-8 border-2 border-gray-200 dark:border-gray-700 hover:border-purple-500 dark:hover:border-purple-500 transition-all duration-300 hover:shadow-xl">
+                        <div class="flex items-start gap-4">
+                            <div class="flex-shrink-0 w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500 to-blue-600 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                </svg>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Phone</h3>
+                                <a href="tel:+919818979009" class="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors text-lg">
+                                    +91 9818979009
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Email -->
+                    <div class="group bg-white dark:bg-gray-800 rounded-2xl p-8 border-2 border-gray-200 dark:border-gray-700 hover:border-purple-500 dark:hover:border-purple-500 transition-all duration-300 hover:shadow-xl">
+                        <div class="flex items-start gap-4">
+                            <div class="flex-shrink-0 w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Email</h3>
+                                <a href="mailto:9818979009x@gmail.com" class="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors text-lg break-all">
+                                    9818979009x@gmail.com
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- WhatsApp -->
+                    <div class="group bg-white dark:bg-gray-800 rounded-2xl p-8 border-2 border-gray-200 dark:border-gray-700 hover:border-purple-500 dark:hover:border-purple-500 transition-all duration-300 hover:shadow-xl">
+                        <div class="flex items-start gap-4">
+                            <div class="flex-shrink-0 w-14 h-14 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                                </svg>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">WhatsApp</h3>
+                                <a href="https://wa.me/919818979009?text=Hello%20Dheeraj,%20I%20am%20interested%20in%20getting%20a%20website%20or%20web%20portal%20developed." target="_blank" class="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors text-lg">
+                                    +91 9818979009
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Address -->
+                    <div class="group bg-white dark:bg-gray-800 rounded-2xl p-8 border-2 border-gray-200 dark:border-gray-700 hover:border-purple-500 dark:hover:border-purple-500 transition-all duration-300 hover:shadow-xl">
+                        <div class="flex items-start gap-4">
+                            <div class="flex-shrink-0 w-14 h-14 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Address</h3>
+                                <p class="text-gray-600 dark:text-gray-400 text-lg leading-relaxed">
+                                    Gurugram, Haryana
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Social Links & Freelancer Platforms -->
+                <div class="pt-12 border-t-2 border-gray-200 dark:border-gray-700">
+                    <p class="text-center text-gray-600 dark:text-gray-400 mb-6 text-lg">Connect with me on social media</p>
+                    <div class="flex flex-wrap justify-center gap-4 mb-8">
+                        <!-- GitHub -->
+                        <a href="https://www.linkedin.com/in/dheerajyadav555" target="_blank" class="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-900 border-2 border-gray-300 dark:border-gray-700 hover:border-purple-500 dark:hover:border-purple-500 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg">
+                            <svg class="w-5 h-5 text-gray-700 dark:text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                        <!-- LinkedIn -->
+                        <a href="https://www.linkedin.com/in/dheerajyadav555" target="_blank" class="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-900 border-2 border-gray-300 dark:border-gray-700 hover:border-purple-500 dark:hover:border-purple-500 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg">
+                            <svg class="w-5 h-5 text-gray-700 dark:text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                        <!-- Twitter/X -->
+                        <a href="https://www.linkedin.com/in/dheerajyadav555" target="_blank" class="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-900 border-2 border-gray-300 dark:border-gray-700 hover:border-purple-500 dark:hover:border-purple-500 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg">
+                            <svg class="w-5 h-5 text-gray-700 dark:text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                            </svg>
+                        </a>
+                    </div>
+                    
+                    <!-- Freelancer Platforms -->
+                    <p class="text-center text-gray-600 dark:text-gray-400 mb-6 text-lg">Hire me on freelancer platforms</p>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <!-- Fiverr -->
+                        <a href="https://www.linkedin.com/in/dheerajyadav555" target="_blank" class="group px-6 py-3 rounded-xl bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 transition-all duration-300 hover:scale-105 hover:shadow-lg flex items-center gap-2">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M23.004 15.588a.995.995 0 1 0 .002-1.99.995.995 0 0 0-.002 1.99zm-3.382-4.39c-1.32 0-2.393.966-2.393 2.157 0 1.19 1.073 2.157 2.393 2.157 1.321 0 2.394-.966 2.394-2.157 0-1.19-1.073-2.157-2.394-2.157zm-6.861 0c-1.32 0-2.393.966-2.393 2.157 0 1.19 1.073 2.157 2.393 2.157s2.393-.966 2.393-2.157c0-1.19-1.073-2.157-2.393-2.157zm-6.86 0c-1.32 0-2.394.966-2.394 2.157 0 1.19 1.073 2.157 2.393 2.157 1.32 0 2.393-.966 2.393-2.157 0-1.19-1.073-2.157-2.393-2.157zm-3.146 0A2.157 2.157 0 0 0 .6 13.355a2.157 2.157 0 0 0 2.157 2.157 2.157 2.157 0 0 0 2.157-2.157 2.157 2.157 0 0 0-2.157-2.157z"/>
+                            </svg>
+                            <span class="text-white font-semibold">Fiverr</span>
+                        </a>
+                        
+                        <!-- Upwork -->
+                        <a href="https://www.linkedin.com/in/dheerajyadav555" target="_blank" class="group px-6 py-3 rounded-xl bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 transition-all duration-300 hover:scale-105 hover:shadow-lg flex items-center gap-2">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.143-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/>
+                            </svg>
+                            <span class="text-white font-semibold">Upwork</span>
+                        </a>
+                        
+                        <!-- Freelancer -->
+                        <a href="https://www.linkedin.com/in/dheerajyadav555" target="_blank" class="group px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 hover:scale-105 hover:shadow-lg flex items-center gap-2">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M14.096 3.076l1.634 2.292L24 3.076M5.503 20.924l4.474-4.374-2.692-2.689M6.31 10.13L0 3.076h6.505L10.4 7.606"/>
+                            </svg>
+                            <span class="text-white font-semibold">Freelancer</span>
+                        </a>
+                        
+                        <!-- Toptal -->
+                        <a href="https://www.linkedin.com/in/dheerajyadav555" target="_blank" class="group px-6 py-3 rounded-xl bg-gradient-to-r from-blue-700 to-blue-900 hover:from-blue-800 hover:to-blue-950 transition-all duration-300 hover:scale-105 hover:shadow-lg flex items-center gap-2">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.227 10.038L10.54 0l-2.273 2.273 7.814 7.815-7.814 7.814L10.54 20.175l9.687-9.688a.956.956 0 0 0 0-1.449zM8.273 14.363l-2.273 2.273-2.273-2.273 2.273-2.273z"/>
+                            </svg>
+                            <span class="text-white font-semibold">Toptal</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 dark:bg-black text-gray-400 py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-4">
+                <!-- <div class="text-2xl font-bold font-mono gradient-text">
+                    &lt;Dev/&gt;
+                </div> -->
+                <p class="text-sm">
+                    © Full Stack Developer. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Action Buttons -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col gap-4">
+        <!-- WhatsApp Floating Button -->
+        <a href="https://wa.me/919818979009?text=Hello%20Dheeraj,%20I%20am%20interested%20in%20getting%20a%20website%20or%20web%20portal%20developed." target="_blank" class="group relative w-14 h-14 bg-gradient-to-br from-green-500 to-green-600 rounded-full shadow-lg hover:shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 animate-bounce">
+            <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+            </svg>
+            <span class="absolute right-16 top-1/2 -translate-y-1/2 bg-gray-900 dark:bg-gray-800 text-white px-3 py-2 rounded-lg text-sm font-semibold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                Chat on WhatsApp
+            </span>
+        </a>
+        
+        <!-- Phone Call Floating Button -->
+        <a href="tel:+919818979009" class="group relative w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full shadow-lg hover:shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 animate-bounce" style="animation-delay: 0.5s;">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+            </svg>
+            <span class="absolute right-16 top-1/2 -translate-y-1/2 bg-gray-900 dark:bg-gray-800 text-white px-3 py-2 rounded-lg text-sm font-semibold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                Call Now
+            </span>
+        </a>
     </div>
-  </section>
 
-  <!-- About Section -->
-  <section id="about" class="container mx-auto py-16 px-4">
-    <h2 class="text-3xl font-bold mb-6 text-center">About Me</h2>
-    <div class="max-w-3xl mx-auto text-center text-gray-700 space-y-4">
-      <p>I have over 15+ years of experience in web development, with a strong background in both front-end and back-end technologies.</p>
-      <p>Profile: Full Stack Web Developer | Degree: B.Tech | Experience: 15+ Years</p>
-      <p>Phone: +91 9818979009 | Email: <a href="mailto:9818979009x@gmail.com" class="text-blue-600">9818979009x@gmail.com</a></p>
-      <p>Address: Gurugram, India</p>
-    </div>
-  </section>
-
-  <!-- Stats Section -->
-  <section class="bg-gray-100 py-16 px-4">
-    <div class="container mx-auto max-w-4xl grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-      <div class="bg-white p-6 rounded-lg shadow">
-        <h3 class="text-4xl font-bold text-blue-600">15+</h3>
-        <p>Years of Experience</p>
-      </div>
-      <div class="bg-white p-6 rounded-lg shadow">
-        <h3 class="text-4xl font-bold text-blue-600">100+</h3>
-        <p>Happy Clients</p>
-      </div>
-      <div class="bg-white p-6 rounded-lg shadow">
-        <h3 class="text-4xl font-bold text-blue-600">200+</h3>
-        <p>Projects Completed</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Skills Section -->
-  <section id="skills" class="container mx-auto py-16 px-4">
-    <h2 class="text-3xl font-bold mb-8 text-center">Skills</h2>
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-      <div class="bg-white p-6 rounded-lg shadow text-center font-semibold">WordPress – 95%</div>
-      <div class="bg-white p-6 rounded-lg shadow text-center font-semibold">Magento – 80%</div>
-      <div class="bg-white p-6 rounded-lg shadow text-center font-semibold">PHP – 90%</div>
-      <div class="bg-white p-6 rounded-lg shadow text-center font-semibold">JavaScript – 90%</div>
-      <div class="bg-white p-6 rounded-lg shadow text-center font-semibold">HTML – 95%</div>
-      <div class="bg-white p-6 rounded-lg shadow text-center font-semibold">CSS – 85%</div>
-    </div>
-  </section>
-
-  <!-- Experience Section -->
-  <section id="experience" class="bg-gray-100 py-16 px-4">
-    <h2 class="text-3xl font-bold mb-6 text-center">Experience</h2>
-    <div class="max-w-3xl mx-auto space-y-6 text-gray-700">
-      <div>
-        <h3 class="font-semibold text-lg">Full Stack Web Developer – Freelancer | 2019 – Till Now</h3>
-        <p>I am working as a Freelancer handling various web projects.</p>
-      </div>
-      <div>
-        <h3 class="font-semibold text-lg">Sr. Web Developer – Adglobal360 Pvt Ltd Gurgaon | 2014 – 2019</h3>
-        <p>5 Years of experience in Magento, WordPress, Laravel, and CakePHP.</p>
-      </div>
-      <div>
-        <h3 class="font-semibold text-lg">Web Developer – EyeforWeb Pvt Ltd Delhi | 2013 – 2014</h3>
-        <p>1 Year experience in Magento and WordPress development.</p>
-      </div>
-      <div>
-        <h3 class="font-semibold text-lg">Web Developer – Wits Technologies Pvt Ltd, Noida | 2011 – 2013</h3>
-        <p>2 Years experience in Magento and WordPress.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Expertise / Services Section -->
-  <section id="services" class="container mx-auto py-16 px-4">
-    <h2 class="text-3xl font-bold mb-8 text-center">Expertise & Services</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto text-gray-700">
-      <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
-        <h3 class="font-semibold mb-2">WordPress</h3>
-        <p>WooCommerce, Plugin Development, Theme Development, Customization</p>
-      </div>
-      <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
-        <h3 class="font-semibold mb-2">Magento</h3>
-        <p>Module Development, Theme Development, Customization</p>
-      </div>
-      <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
-        <h3 class="font-semibold mb-2">Web Security & Maintenance</h3>
-        <p>Malware removal, Version upgrades, Speed optimization, Security</p>
-      </div>
-    </div>
-  </section>
-
- <!-- Portfolio Section -->
-<section id="portfolio" class="bg-gray-100 py-16 px-4">
-  <h2 class="text-3xl font-bold mb-8 text-center">Portfolio</h2>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-    <a href="https://www.dcgpac.com" target="_blank" class="bg-white p-6 rounded-lg shadow hover:shadow-xl transition text-center font-semibold">DCGPAC</a>
-    <a href="https://www.rentickle.com" target="_blank" class="bg-white p-6 rounded-lg shadow hover:shadow-xl transition text-center font-semibold">Rentickle</a>
-    <a href="https://lovelysweets.com" target="_blank" class="bg-white p-6 rounded-lg shadow hover:shadow-xl transition text-center font-semibold">Lovely Sweets</a>
-    <a href="https://www.exclusivelane.com" target="_blank" class="bg-white p-6 rounded-lg shadow hover:shadow-xl transition text-center font-semibold">Exclusive Lane</a>
-    <a href="https://www.brusselsmandir.com" target="_blank" class="bg-white p-6 rounded-lg shadow hover:shadow-xl transition text-center font-semibold">Brussels Mandir</a>
-    <a href="https://www.gullendah.com.au" target="_blank" class="bg-white p-6 rounded-lg shadow hover:shadow-xl transition text-center font-semibold">Gullendah</a>
-    <a href="https://www.fmawealth.com.au" target="_blank" class="bg-white p-6 rounded-lg shadow hover:shadow-xl transition text-center font-semibold">FMA Wealth</a>
-    <a href="https://www.rayspowerinfra.com" target="_blank" class="bg-white p-6 rounded-lg shadow hover:shadow-xl transition text-center font-semibold">Rays Power Infra</a>
-    <a href="https://hueb.com/" target="_blank" class="bg-white p-6 rounded-lg shadow hover:shadow-xl transition text-center font-semibold">Hueb</a>
-    <a href="https://ipwithease.com" target="_blank" class="bg-white p-6 rounded-lg shadow hover:shadow-xl transition text-center font-semibold">IP With Ease</a>
-    <a href="https://dogdekho.com" target="_blank" class="bg-white p-6 rounded-lg shadow hover:shadow-xl transition text-center font-semibold">Dog Dekho</a>
-    <a href="https://amt.org.in" target="_blank" class="bg-white p-6 rounded-lg shadow hover:shadow-xl transition text-center font-semibold">AMT</a>
-    <a href="https://www.rjmart.in" target="_blank" class="bg-white p-6 rounded-lg shadow hover:shadow-xl transition text-center font-semibold">RJ Mart</a>
-    <a href="https://govindasnj.com" target="_blank" class="bg-white p-6 rounded-lg shadow hover:shadow-xl transition text-center font-semibold">Govindas NJ</a>
-    <a href="https://ipodekho.in" target="_blank" class="bg-white p-6 rounded-lg shadow hover:shadow-xl transition text-center font-semibold">IPO deKho.in </a>
-    <a href="https://rkhabar.com" target="_blank" class="bg-white p-6 rounded-lg shadow hover:shadow-xl transition text-center font-semibold">RKhabar</a>
-    <a href="https://uttarakhandexperts.com" target="_blank" class="bg-white p-6 rounded-lg shadow hover:shadow-xl transition text-center font-semibold">Uttarakhand Experts</a>
-    <a href="https://nidekagroup.com" target="_blank" class="bg-white p-6 rounded-lg shadow hover:shadow-xl transition text-center font-semibold">Nideka Group</a>
-  </div>
-</section>
-
-
-  <!-- Contact Section -->
-  <section id="contact" class="container mx-auto py-16 px-4 text-center">
-    <h2 class="text-3xl font-bold mb-6">Contact Me</h2>
-    <p>Hello! If you want to reach me or have any suggestions, feel free to contact me. 😃</p>
-    <p class="mt-2">Phone: +91 9818979009</p>
-    <p>Email: <a href="mailto:9818979009x@gmail.com" class="text-blue-600">9818979009x@gmail.com</a></p>
-    <p>WhatsApp: +91 9818979009</p>
-    <p>Address: Gurugram, INDIA</p>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-gray-800 text-white py-6 text-center">
-    &copy; Dheeraj 
-  </footer>
-
+    <!-- JavaScript -->
+    <script>
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const html = document.documentElement;
+        
+        // Check for saved theme preference or default to system preference
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+            html.classList.add('dark');
+        }
+        
+        darkModeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+        });
+        
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when clicking on a link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // Smooth scroll with offset for fixed navbar
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 80; // Height of navbar
+                    const targetPosition = target.offsetTop - offset;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Apply animation to sections
+        document.querySelectorAll('section').forEach((section, index) => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+            observer.observe(section);
+        });
+    </script>
 </body>
 </html>
