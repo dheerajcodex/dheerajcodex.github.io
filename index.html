@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dheeraj - Full Stack Developer specializing in PHP, WordPress, and modern web technologies. Building exceptional digital experiences.">
+    <meta name="keywords" content="Full Stack Developer, PHP, WordPress, Web Development, Tailwind CSS, Shopify, Magento">
     <title>Dheeraj | Full Stack Developer</title>
     
     <!-- Tailwind CSS CDN -->
@@ -123,7 +125,7 @@
         /* Scroll Progress Bar */
         #scrollProgress {
             position: fixed;
-            top: 0;
+            top: 64px; /* Below navbar (navbar height is 64px/h-16) */
             left: 0;
             width: 0%;
             height: 4px;
@@ -163,9 +165,6 @@
     </style>
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans">
-    
-    <!-- Scroll Progress Bar -->
-    <div id="scrollProgress"></div>
     
     <!-- Navbar -->
     <nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border-b border-gray-200 dark:border-gray-800">
@@ -221,6 +220,9 @@
             </div>
         </div>
     </nav>
+
+    <!-- Scroll Progress Bar -->
+    <div id="scrollProgress"></div>
 
     <!-- Hero Section -->
     <section id="home" class="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden grid-pattern">
@@ -1009,7 +1011,7 @@
     </div>
 
     <!-- JavaScript -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+   <script>
         // Dark Mode Toggle
         const darkModeToggle = document.getElementById('darkModeToggle');
         const html = document.documentElement;
