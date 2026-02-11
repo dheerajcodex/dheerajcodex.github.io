@@ -3,168 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Dheeraj - Full Stack Developer specializing in PHP, WordPress, and modern web technologies. Building exceptional digital experiences.">
+    <meta name="description" content="Dheeraj - Full Stack Developer specializing in PHP, WordPress, and modern web technologies.">
     <meta name="keywords" content="Full Stack Developer, PHP, WordPress, Web Development, Tailwind CSS, Shopify, Magento">
     <title>Dheeraj | Full Stack Developer</title>
     
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts -->
+    <!-- Preconnect for faster font loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     
-    <script>
-        // Tailwind configuration
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Outfit', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
-                    },
-                    colors: {
-                        primary: {
-                            50: '#f0f9ff',
-                            100: '#e0f2fe',
-                            200: '#bae6fd',
-                            300: '#7dd3fc',
-                            400: '#38bdf8',
-                            500: '#0ea5e9',
-                            600: '#0284c7',
-                            700: '#0369a1',
-                            800: '#075985',
-                            900: '#0c4a6e',
-                        },
-                        accent: {
-                            50: '#faf5ff',
-                            100: '#f3e8ff',
-                            200: '#e9d5ff',
-                            300: '#d8b4fe',
-                            400: '#c084fc',
-                            500: '#a855f7',
-                            600: '#9333ea',
-                            700: '#7e22ce',
-                            800: '#6b21a8',
-                            900: '#581c87',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    
-    <style>
-        /* Custom animations and effects */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-        
-        @keyframes glow {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
-        }
-        
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        .animate-float {
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        .animate-glow {
-            animation: glow 2s ease-in-out infinite;
-        }
-        
-        .animate-gradient {
-            background-size: 200% 200%;
-            animation: gradient 15s ease infinite;
-        }
-        
-        .grid-pattern {
-            background-image: 
-                linear-gradient(rgba(139, 92, 246, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(139, 92, 246, 0.05) 1px, transparent 1px);
-            background-size: 50px 50px;
-        }
-        
-        .dark .grid-pattern {
-            background-image: 
-                linear-gradient(rgba(139, 92, 246, 0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(139, 92, 246, 0.1) 1px, transparent 1px);
-        }
-        
-        /* Smooth transitions */
-        * {
-            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
-            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-            transition-duration: 150ms;
-        }
-        
-        /* Gradient text */
-        .gradient-text {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .dark .gradient-text {
-            background: linear-gradient(135deg, #a78bfa 0%, #c084fc 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        /* Scroll Progress Bar */
-        #scrollProgress {
-            position: fixed;
-            top: 64px; /* Below navbar (navbar height is 64px/h-16) */
-            left: 0;
-            width: 0%;
-            height: 4px;
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #667eea 100%);
-            background-size: 200% 100%;
-            animation: gradient 3s ease infinite;
-            z-index: 9999;
-            transition: width 0.1s ease-out;
-        }
-        
-        /* Active Navigation Link */
-        .nav-link {
-            position: relative;
-            display: inline-block;
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-            border-radius: 2px;
-            transition: width 0.3s ease;
-        }
-        
-        .nav-link.active::after {
-            width: 80%;
-        }
-        
-        .nav-link:hover::after {
-            width: 80%;
-        }
-    </style>
+    <!-- Tailwind CSS 4 (Generated) -->
+    <link rel="stylesheet" href="./src/output.css">
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans">
+
+    <!-- Scroll Progress Bar -->
+    <div id="scrollProgress" class="fixed top-16 left-0 h-1 bg-gradient-to-r from-purple-600 to-blue-600 z-50 transition-all duration-300" style="width: 0%;"></div>
     
     <!-- Navbar -->
     <nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border-b border-gray-200 dark:border-gray-800">
@@ -302,7 +158,7 @@
                                 <div class="text-lg opacity-90">Crafting Digital Excellence</div>
                             </div>                             
                         </div> -->
-                        <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Developer" class="relative rounded-2xl shadow-2xl w-full object-cover h-100">
+                        <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Developer" class="relative rounded-2xl shadow-2xl w-full object-cover">
                     </div> 
                    
 
@@ -981,7 +837,7 @@
                     &lt;Dev/&gt;
                 </div> -->
                 <p class="text-sm">
-                    © Full Stack Developer. All rights reserved.
+                    Made with ❤️ by Dheeraj. © Full Stack Developer.
                 </p>
             </div>
         </div>
@@ -1011,7 +867,7 @@
     </div>
 
     <!-- JavaScript -->
-   <script>
+    <script>
         // Dark Mode Toggle
         const darkModeToggle = document.getElementById('darkModeToggle');
         const html = document.documentElement;
