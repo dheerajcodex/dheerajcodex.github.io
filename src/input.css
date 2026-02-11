@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+/* Tailwind CSS 4 Theme Configuration */
+@theme {
+  /* Custom Fonts */
+  --font-sans: 'Outfit', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+/* FIX: Force Dark Mode to use the 'class' strategy 
+    This tells Tailwind to activate dark variants when the .dark class is present on HTML 
+*/
+@variant dark (&:where(.dark, .dark *));
+
+/* Custom Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Custom Utilities */
+@layer utilities {
+  /* Animations */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient-shift 15s ease infinite;
+  }
+
+  /* Grid Pattern Background */
+  .grid-pattern {
+    background-image: 
+      linear-gradient(rgb(139 92 246 / 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(139 92 246 / 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  .dark .grid-pattern {
+    background-image: 
+      linear-gradient(rgb(139 92 246 / 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(139 92 246 / 0.1) 1px, transparent 1px);
+  }
+
+  /* Gradient Text */
+  .gradient-text {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .dark .gradient-text {
+    background: linear-gradient(135deg, #a78bfa 0%, #c084fc 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Scroll Progress Bar */
+  .scroll-progress {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    width: 0%;
+    height: 4px;
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #667eea 100%);
+    background-size: 200% 100%;
+    animation: gradient-shift 3s ease infinite;
+    z-index: 9999;
+    transition: width 0.1s ease-out;
+  }
+
+  /* Navigation Active Link */
+  .nav-link {
+    position: relative;
+    display: inline-block;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+  }
+
+  .nav-link.active::after,
+  .nav-link:hover::after {
+    width: 80%;
+  }
+}
+
+/* Global Styles */
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
